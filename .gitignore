@@ -327,3 +327,6 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+# Python.gitignore
+.ipynb_checkpoints
