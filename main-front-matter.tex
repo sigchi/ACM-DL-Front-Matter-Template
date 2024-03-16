@@ -1,0 +1,129 @@
+\documentclass[10pt, letterpaper]{article}
+
+\input{config}
+
+\usepackage[utf8]{inputenc}
+\usepackage[inline]{enumitem}
+\setlist[enumerate]{leftmargin=19mm}
+
+\usepackage{multicol}
+\usepackage{balance}
+\usepackage[hidelinks]{hyperref}
+\usepackage{pdfpages}
+
+\usepackage{lipsum}
+\usepackage{todonotes}
+\let\xtodo\todo
+\renewcommand{\todo}[1]{\xtodo[inline,color=green!30]{#1}}
+
+% Note: this is necessary to display emoji in titles
+\usepackage{graphicx}
+
+% Note: this is necessary to display the names like "Nađa Terzimehić" correctly
+%\usepackage[T1]{fontenc}
+\usepackage{xeCJK} % Sven Mayer: xLatex need, support for Chinese characters 
+
+
+\usepackage[explicit]{titlesec}
+
+\usepackage{geometry}
+\geometry{margin=0.8in}
+
+\pagestyle{empty}
+\setlength{\columnsep}{0.4in}
+\titlespacing*{\subsubsection}{0pt}{2ex}{0.5ex}
+\setlength{\multicolsep}{0in}
+\setlength{\parindent}{0in}
+\setlength{\parskip}{1ex plus 2pt minus 1pt}
+\setlength{\parindent}{0pt}
+
+
+\usepackage{ctable}
+
+\titleformat{\section}[block]{\Large\bfseries\sffamily}%
+{}%
+{0pt}%
+{
+\begin{center}
+\sffamily\bfseries\huge{#1}
+\vspace{2ex}
+\end{center}
+%$\centering\cellcolor{blue!25}  & #1\\
+%\specialrule{.25em}{-0.1em}{0em}
+%
+}
+
+\titleformat{\subsection}[block]{\Large\bfseries\sffamily}%
+{}%
+{0pt}%
+{
+\sffamily\bfseries{#1}
+\vspace{1ex}
+}
+
+\titleformat{\subsubsection}[block]{\bfseries\sffamily}%
+{}%
+{0pt}%
+{
+\sffamily\bfseries{#1}
+\vspace{1ex}
+}
+
+
+\title{\conferenceAcronym Proceedings}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\includepdf{cover/cover_main.pdf}
+\includepdf{cover/acm-copyright.pdf}
+
+
+\section{General Chairs' Welcome}
+\input{welcome/welcome-gc.tex}
+\newpage
+
+\section{Technical Program Chairs' Welcome}
+\input{welcome/welcome-tpc.tex}
+\newpage
+
+\section{Papers Chairs' Welcome}
+\input{welcome/welcome-paper.tex}
+\newpage
+
+\section{Proceedings Table of Contents}
+\input{content/content.tex}
+\newpage
+
+\section{Organization Committee}
+\input{committee/committee-organizer.tex}
+\newpage
+
+
+%% Comment
+% Keep only the tracked that are in this proceedings. 
+% If a conference has both a man proceedings and a companion/extended abstract, comment out the sections that are not applicable.
+\section{Papers Chairs, Committee Members, and Reviewers}
+\input{committee/committee-paper.tex}
+\newpage
+
+\section{Late-Breaking Work Chairs, Committee Members, and Reviewers}
+\input{committee/committee-lbw}
+\newpage
+
+\section{Demonstrations Chairs and Jury}
+\input{committee/committee-demo}
+\newpage
+
+\section{Doctoral Consortium Chairs and Jury}
+\input{committee/committee-dc}
+\newpage
+
+\section{Workshop Chairs and Jury}
+\input{committee/committee-dc}
+\newpage
+
+\includepdf{cover/end_sponsors.pdf}
+
+\end{document}
