@@ -1,0 +1,617 @@
+{
+  "schemeVersion": 7,
+  "cc_licence": "Content of this file is licensed under a CC BY-NC-SA 4.0 license. For details see https://creativecommons.org/licenses/by-nc-sa/4.0/",
+  "conference": {
+    "id": "",
+    "shortName": "",
+    "year": 2023,
+    "startDate": 0,
+    "endDate": 0,
+    "fullName": "Conference on Templates in Templates -- Note: This is not a full working export.",
+    "url": "https://github.com/sigchi",
+    "location": "Template Ciyty",
+    "timeZoneOffset": 120,
+    "timeZoneName": "Europe/Berlin",
+    "logoUrl": "",
+    "accessibilityFaqUrl": "",
+    "name": "TP 2023"
+  },
+  "publicationInfo": {
+    "hideLinksBeforeConference": true,
+    "version": 100,
+    "publicationStatus": "PUBLISHED",
+    "isProgramEnabled": true,
+    "isDraft": true,
+    "isRegistrationEnabled": true,
+    "publicationDate": "2023-04-08 21:26:56+00"
+  },
+  "sponsors": [],
+  "sponsorLevels": [],
+  "floors": [],
+  "rooms": [],
+  "tracks": [],
+  "contentTypes": [],
+  "timeSlots": [],
+  "sessions": [
+    {
+      "id": 80001,
+      "name": "Name of the First Paper Session",
+      "isParallelPresentation": false,
+      "importedId": "mF5v7Drpx4O0LRiCmeVSDg",
+      "typeId": 12529,
+      "roomId": 11007,
+      "chairIds": [],
+      "contentIds": [
+        90001,
+        90002,
+        90003,
+        90004
+      ],
+      "source": "PCS",
+      "timeSlotId": 12949,
+      "note": ""
+    },
+    {
+      "id": 80002,
+      "name": "Name of the Second Paper Session",
+      "isParallelPresentation": false,
+      "importedId": "ZfgZ3hRm9WQVZOm_FJmt1A",
+      "typeId": 12529,
+      "roomId": 11002,
+      "chairIds": [],
+      "contentIds": [
+        90005,
+        90006,
+        90007,
+        90008
+      ],
+      "source": "PCS",
+      "timeSlotId": 12954,
+      "note": ""
+    },
+    {
+      "id": 80003,
+      "name": "Late Breaking Work",
+      "isParallelPresentation": true,
+      "importedId": "jgd9dBfDkhJm5Fv148iAtQ",
+      "typeId": 12528,
+      "roomId": 11021,
+      "chairIds": [],
+      "contentIds": [
+        91001,
+        91002,
+        91003,
+        91004
+      ],
+      "source": "PCS",
+      "timeSlotId": 12958,
+      "note": ""
+    },
+    {
+      "id": 80004,
+      "name": "Demonstrations",
+      "isParallelPresentation": true,
+      "importedId": "2f8c599c-c9a7-4469-9182-86c3a208e04a",
+      "typeId": 12717,
+      "roomId": 11021,
+      "chairIds": [],
+      "contentIds": [
+        92001,
+        92002,
+        92003,
+        92004
+      ],
+      "source": "SYS",
+      "timeSlotId": 13008
+    },
+    {
+      "id": 80005,
+      "name": "Doctoral Consortium",
+      "isParallelPresentation": true,
+      "importedId": "992f5dc5-82bf-4c0c-88e9-fc27fbf9e1a6",
+      "typeId": 12526,
+      "roomId": 10994,
+      "chairIds": [],
+      "contentIds": [
+        93001,
+        93002,
+        93003,
+        93004
+      ],
+      "source": "SYS",
+      "timeSlotId": 12971
+    },
+    {
+      "id": 80006,
+      "name": "Workshop 1",
+      "isParallelPresentation": true,
+      "importedId": "992f5dc5-82bf-4c0c-88e9-fc27fbf9e1a6",
+      "typeId": 12526,
+      "roomId": 10994,
+      "chairIds": [],
+      "contentIds": [
+        94001
+      ],
+      "source": "SYS",
+      "timeSlotId": 12971
+    },
+    {
+      "id": 80007,
+      "name": "Workshop 2",
+      "isParallelPresentation": true,
+      "importedId": "992f5dc5-82bf-4c0c-88e9-fc27fbf9e1a6",
+      "typeId": 12526,
+      "roomId": 10994,
+      "chairIds": [],
+      "contentIds": [
+        94002
+      ],
+      "source": "SYS",
+      "timeSlotId": 12971
+    },
+    {
+      "id": 80008,
+      "name": "Workshop 3",
+      "isParallelPresentation": true,
+      "importedId": "992f5dc5-82bf-4c0c-88e9-fc27fbf9e1a6",
+      "typeId": 12526,
+      "roomId": 10994,
+      "chairIds": [],
+      "contentIds": [
+        94003
+      ],
+      "source": "SYS",
+      "timeSlotId": 12971
+    },
+    {
+      "id": 80009,
+      "name": "Workshop 4",
+      "isParallelPresentation": true,
+      "importedId": "992f5dc5-82bf-4c0c-88e9-fc27fbf9e1a6",
+      "typeId": 12526,
+      "roomId": 10994,
+      "chairIds": [],
+      "contentIds": [
+        94004
+      ],
+      "source": "SYS",
+      "timeSlotId": 12971
+    }
+  ],
+  "contents": [
+    {
+      "id": 90001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 1st Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-1111",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80001
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90002,
+      "typeId": 10000,
+      "title": "This Is the Title of the 2nd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-2222",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80001
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90003,
+      "typeId": 10000,
+      "title": "This Is the Title of the 3rd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-3333",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80001
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90004,
+      "typeId": 10000,
+      "title": "This Is the Title of the 4th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-4444",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80001
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 5th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-5555",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80002
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90006,
+      "typeId": 10000,
+      "title": "This Is the Title of the 6th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-6666",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80002
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90007,
+      "typeId": 10000,
+      "title": "This Is the Title of the 7th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-7777",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80002
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 90008,
+      "typeId": 10000,
+      "title": "This Is the Title of the 8th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23a-8888",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80002
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 91001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 1st Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23b-1111",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80003
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 91002,
+      "typeId": 10000,
+      "title": "This Is the Title of the 2nd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23b-2222",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80003
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 91003,
+      "typeId": 10000,
+      "title": "This Is the Title of the 3rd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23b-3333",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80003
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 91004,
+      "typeId": 10000,
+      "title": "This Is the Title of the 4th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23b-4444",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80003
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 92001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 1st Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23c-1111",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80004
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 92002,
+      "typeId": 10000,
+      "title": "This Is the Title of the 2nd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23c-2222",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80004
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 92003,
+      "typeId": 10000,
+      "title": "This Is the Title of the 3rd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23c-3333",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80004
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 92004,
+      "typeId": 10000,
+      "title": "This Is the Title of the 4th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23c-4444",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80004
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 93001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 1st Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23d-1111",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80005
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 93002,
+      "typeId": 10000,
+      "title": "This Is the Title of the 2nd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23d-2222",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80005
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 93003,
+      "typeId": 10000,
+      "title": "This Is the Title of the 3rd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23d-3333",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80005
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 93004,
+      "typeId": 10000,
+      "title": "This Is the Title of the 4th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23d-4444",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80005
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 94001,
+      "typeId": 10000,
+      "title": "This Is the Title of the 1st Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23e-1111",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80006
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 94002,
+      "typeId": 10000,
+      "title": "This Is the Title of the 2nd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23e-2222",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80007
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 94003,
+      "typeId": 10000,
+      "title": "This Is the Title of the 3rd Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23e-3333",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80008
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    },
+    {
+      "id": 94004,
+      "typeId": 10000,
+      "title": "This Is the Title of the 4th Paper",
+      "recognitionIds": [],
+      "isBreak": false,
+      "importedId": "tp23e-4444",
+      "source": "PCS",
+      "trackId": 10000,
+      "tags": [],
+      "keywords": [],
+      "sessionIds": [
+        80009
+      ],
+      "eventIds": [],
+      "abstract": "",
+      "authors": []
+    }
+  ],
+  "people": [],
+  "recognitions": []
+}
