@@ -22,7 +22,7 @@ After exporting all data, adjust the `proceedingsInfo.csv` file to reflect all v
 Exceute the `generateFrontMatter.ipynb` script using `jupyter nbconvert --execute --to notebook --inplace generateFrontMatter.ipynb` or start a jupter server to jun the script. 
 
 ## 4. Create Extra PDF Files
-* Title Page (`cover/cover_font.pdf`): This can be designed to match the conference theme. The conference name, general chair names, and technical program chair names should be included. 
+* Title Page (`cover/cover_font.pdf`): This can be designed to match the conference theme. The conference name, general chair names, and technical program chair names should be included. The original layout is from [ACM Styleguide](http://identitystandards.acm.org/styleguide/).
 * Last Page (`cover/cover_back.pdf`): This can be designed to match the conference theme. The recommendation is to include the sponsors.
 * Copyright Page (`acm-copyright.pdf`): Fill in the [ACM Copyright template](https://www.acm.org/binaries/content/assets/publications/gi-verso.doc) to create the `acm-copyright.pdf` (see the [ACM General Instructions for Proceedings Volumes] (https://www.acm.org/publications/gi-proceedings-current) for all details). This page must appear as the second page in the final font matter.
 
