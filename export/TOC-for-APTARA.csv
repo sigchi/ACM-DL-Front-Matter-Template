@@ -1,0 +1,25 @@
+Order,ID,TOC_ID,Title,SessionName,SessionName
+2,pn1111,PAPER001,This Is the Title of the 1st Paper,Paper,Name of the First Paper Session
+3,pn2222,PAPER002,This Is the Title of the 2nd Paper,Paper,Name of the First Paper Session
+4,pn3333,PAPER003,This Is the Title of the 3rd Paper,Paper,Name of the First Paper Session
+5,pn4444,PAPER004,This Is the Title of the 4th Paper,Paper,Name of the First Paper Session
+6,pn5555,PAPER005,This Is the Title of the 5h Paper,Paper,Name of the Second Paper Session
+7,pn6666,PAPER006,This Is the Title of the 6th Paper,Paper,Name of the Second Paper Session
+8,pn7777,PAPER007,This Is the Title of the 7th Paper,Paper,Name of the Second Paper Session
+9,pn8888,PAPER008,This Is the Title of the 8th Paper,Paper,Name of the Second Paper Session
+10,lbw1111,LBW001,This Is the Title of the 1st Paper,Late-Breaking Work,Late-Breaking Work
+11,lbw2222,LBW002,This Is the Title of the 2nd Paper,Late-Breaking Work,Late-Breaking Work
+12,lbw3333,LBW003,This Is the Title of the 3rd Paper,Late-Breaking Work,Late-Breaking Work
+13,lbw4444,LBW004,This Is the Title of the 4th Paper,Late-Breaking Work,Late-Breaking Work
+14,demo1111,DEMO001,This Is the Title of the 1st Paper,Demonstration,Demonstration
+15,demo2222,DEMO002,This Is the Title of the 3rd Paper,Demonstration,Demonstration
+16,demo3333,DEMO003,This Is the Title of the 3rd Paper,Demonstration,Demonstration
+17,demo4444,DEMO004,This Is the Title of the 4th Paper,Demonstration,Demonstration
+18,dc1111,DC001,This Is the Title of the 1st Paper,Doctoral Consortium,Doctoral Consortium
+19,dc2222,DC002,This Is the Title of the 2nd Paper,Doctoral Consortium,Doctoral Consortium
+20,dc3333,DC003,This Is the Title of the 3rd Paper,Doctoral Consortium,Doctoral Consortium
+21,dc4444,DC004,This Is the Title of the 4th Paper,Doctoral Consortium,Doctoral Consortium
+22,ws1111,WS001,This Is the Title of the 1st Paper,Workshop,Workshop
+23,ws2222,WS002,This Is the Title of the 2nd Paper,Workshop,Workshop
+24,ws3333,WS003,This Is the Title of the 3rd Paper,Workshop,Workshop
+25,ws4444,WS004,This Is the Title of the 4th Paper,Workshop,Workshop
