@@ -25,6 +25,3 @@ Exceute the `generateFrontMatter.ipynb` script using `jupyter nbconvert --execut
 * Title Page (`cover/cover_font.pdf`): This can be designed to match the conference theme. The conference name, general chair names, and technical program chair names should be included. The original layout is from [ACM Styleguide](http://identitystandards.acm.org/styleguide/).
 * Last Page (`cover/cover_back.pdf`): This can be designed to match the conference theme. The recommendation is to include the sponsors.
 * Copyright Page (`acm-copyright.pdf`): Fill in the [ACM Copyright template](https://www.acm.org/binaries/content/assets/publications/gi-verso.doc) to create the `acm-copyright.pdf` (see the [ACM General Instructions for Proceedings Volumes] (https://www.acm.org/publications/gi-proceedings-current) for all details). This page must appear as the second page in the final font matter.
-
-## 5. Latex
-Compile the `main-front-matter.tex` and the `main-back-matter.tex` files using the XeLaTeX compiler to support UTF-8 and, thus, all special characters.
