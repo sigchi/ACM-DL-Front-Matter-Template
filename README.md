@@ -8,7 +8,7 @@ The template is optimized to be used for conferences that use [PCS](https://new.
 * QOALA Export: One option to group the papers in sessions in the ACM DL is to use the QOALA scheduling data directly. Export the session data from QOALA as `.json` file and save it as `export.json` in the `data-QOALA` folder. TPCs typically have access to QOALA to export the file.
 
 ## 2. Adjust Generation Settings
-After exporting all data, adjust the `proceedingsInfo.csv` file in `data` folderto reflect all venues the conference has accordingly. Each venue (e.g., full papers) is reflected by one row in the file. Columns:
+After exporting all data, adjust the `proceedingsInfo.csv` file in `data` folder to reflect all venues the conference has accordingly. Each venue (e.g., full papers) is reflected by one row in the file. Columns:
 * Name -- The name of the venue, e.g., Full Paper
 * VenueId -- Prefix code for the running number of the entries in the Table of Contents. For instance, "ws" turns to "WS001," etc.
 * PCSId -- code of the venue in PCS, e.g., XXX when the link is https://new.precisionconference.com/XXX/
