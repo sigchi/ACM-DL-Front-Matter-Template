@@ -5,7 +5,7 @@ The template is optimized to be used for conferences that use [PCS](https://new.
 ## 1. Export Data to Generate Front Matter
 * PCS Export: Export reviewer and committee member from PCS into `data-PCS`. Direct links to get the two files: https://new.precisionconference.com/XXX/chair/csv/committee and https://new.precisionconference.com/XXX/chair/csv/reviewers Note: This can only be done with the chair permission.
 * E-Rights Export: To get the CSV, navigate to https://cms.acm.org/cms_proceeding_papers_public.cfm?proceedingID=YOURPROCEEDINGSID&confID=YOURCONFERENCEID, at the top left press the `Create CSV` button and copy-and-pasted the content from the new window into the `export.csv` in the `data-erights` folder.
-* QOALA Export: One option to group the papers in sessions in the ACM DL is to use the QOALA scheduling data directly. Export the session data from QOALA as `.json` file and save it as `export.json` in the `data-QOALA` folder. TPCs typically have access to QOALA to export the file.
+* QOALA Export: One option to group the papers in sessions in the ACM DL is to use the QOALA scheduling data directly. SIGCHI conferences, the full program export can be downloaded directly from https://programs.sigchi.org/ without needing TPC access to QOALA itself. Export the session data from QOALA as `.json` file and save it as `export.json` in the `data-QOALA` folder. 
 
 ## 2. Adjust Generation Settings
 After exporting all data, adjust the `proceedingsInfo.csv` file in `data` folder to reflect all venues the conference has accordingly. Each venue (e.g., full papers) is reflected by one row in the file. Columns:
