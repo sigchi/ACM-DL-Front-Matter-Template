@@ -24,7 +24,7 @@ dfVenues.head()
 print("Generation settings read from data/proceedingsInfo.csv:\n")
 print(dfVenues[[
     "Order", "Name", "VenueId", "PCSId",
-    "NameCommittee", "NameReviewers", "Prefix", "UseQOALASessions",
+    "NameCommittee", "NameReviewers", "Prefix", "UseQOALASessions", "ShowReviewCount",
 ]].to_string(index=False))
 print()
 
@@ -76,14 +76,21 @@ for outDir in outputDirs:
 # %% [markdown]
 # # Generate Committee Files
 
-def getCommittee(PCSId):
+def getReviewCountSuffix(e, showReviewCount):
+    if not showReviewCount:
+        return ""
+    completed = e["Reviews assigned"] - e["Reviews incomplete"]
+    reviewWord = "review" if completed == 1 else "reviews"
+    return f" ({completed} {reviewWord} completed)"
+
+def getCommittee(PCSId, showReviewCount=False):
     path = f"./data-PCS/{PCSId}_committee.csv"
     if (not os.path.isfile(path)):
         print(f"{PCSId} has no committee file")
         return []
 
     df = pd.read_csv(path)
-    df = df[df["Reviews assigned"] != 0]
+    df = df[(df["Reviews assigned"] - df["Reviews incomplete"]) > 0]
 
     if (len(df) == 0):
         print(f"{PCSId} has no reviewers")
@@ -104,10 +111,11 @@ def getCommittee(PCSId):
             aff = f'{e[f"Affil {i} Institution"]}, {e[f"Affil {i} Country"]}'
 
         aff = aff.replace("&", "\\&")
+        reviewCountSuffix = getReviewCountSuffix(e, showReviewCount)
         if isinstance(e["Middle initial"], str):
-            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}, \\emph{{{aff}}}\\\\')
+            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}, \\emph{{{aff}}}{reviewCountSuffix}\\\\')
         else:
-            lstText.append(f'{e["First name"]} {e["Family name"]}, \\emph{{{aff}}}\\\\')
+            lstText.append(f'{e["First name"]} {e["Family name"]}, \\emph{{{aff}}}{reviewCountSuffix}\\\\')
 
     if (len(df) > 50):
         lstText.insert(0, "\\begin{multicols}{2}")
@@ -119,14 +127,14 @@ def getCommittee(PCSId):
     lstText.append("")
     return lstText
 
-def getReviews(PCSId):
+def getReviews(PCSId, showReviewCount=False):
     path = f"./data-PCS/{PCSId}_reviewers.csv"
     if (not os.path.isfile(path)):
         print(f"{PCSId} has no reviwer file")
         return []
 
     df = pd.read_csv(path)
-    df = df[df["Reviews assigned"] != 0]
+    df = df[(df["Reviews assigned"] - df["Reviews incomplete"]) > 0]
 
     if (len(df) == 0):
         print(f"{PCSId} has no reviewers")
@@ -142,10 +150,11 @@ def getReviews(PCSId):
     lstText = []
     lstText.append("\\begin{multicols}{3}")
     for i, e in df.iterrows():
+        reviewCountSuffix = getReviewCountSuffix(e, showReviewCount)
         if isinstance(e["Middle initial"], str):
-            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}\\\\')
+            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}{reviewCountSuffix}\\\\')
         else:
-            lstText.append(f'{e["First name"]} {e["Family name"]}\\\\')
+            lstText.append(f'{e["First name"]} {e["Family name"]}{reviewCountSuffix}\\\\')
     lstText.append("\\end{multicols}")
     lstText.append("")
     return lstText
@@ -185,13 +194,13 @@ for i, e in dfVenues.iterrows():
     lstExport.append("")
 
     if hasValue(e.NameCommittee):
-        commitee = getCommittee(e.PCSId)
+        commitee = getCommittee(e.PCSId, showReviewCount=e.ShowReviewCount)
         if (len(commitee) > 0):
             lstExport.append(f"\\subsection{{{e.NameCommittee}}}")
             lstExport.extend(commitee)
 
     if hasValue(e.NameReviewers):
-        reviewers = getReviews(e.PCSId)
+        reviewers = getReviews(e.PCSId, showReviewCount=e.ShowReviewCount)
         if (len(reviewers) > 0):
             lstExport.append(f"\\subsection{{{e.NameReviewers}}}")
             lstExport.extend(reviewers)
