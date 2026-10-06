@@ -33,6 +33,40 @@ if answer not in ("y", "yes"):
     print("Aborted. No files were generated.")
     sys.exit(0)
 
+def hasValue(x):
+    return isinstance(x, str) and x.strip() != ""
+
+def checkDataFiles(dfVenues):
+    print("Checking data files:")
+    allRequiredPresent = True
+
+    def report(path, label):
+        nonlocal allRequiredPresent
+        exists = os.path.isfile(path)
+        status = "found  " if exists else "MISSING"
+        print(f"  [{status}] {path} ({label})")
+        if not exists:
+            allRequiredPresent = False
+
+    report("./data-erights/export.csv", "ACM E-Rights export")
+
+    for i, e in dfVenues.iterrows():
+        if hasValue(e.NameCommittee):
+            report(f"./data-PCS/{e.PCSId}_committee.csv", f"{e.Name}: {e.NameCommittee}")
+        if hasValue(e.NameReviewers):
+            report(f"./data-PCS/{e.PCSId}_reviewers.csv", f"{e.Name}: {e.NameReviewers}")
+
+    if dfVenues["UseQOALASessions"].any():
+        report("./data-QOALA/export.json", "QOALA session data")
+
+    print()
+
+    if not allRequiredPresent:
+        print("Aborted: a required data file is missing. Set the corresponding Name column in data/proceedingsInfo.csv to blank if this venue does not use it.")
+        sys.exit(1)
+
+checkDataFiles(dfVenues)
+
 # %% [markdown]
 # # Generate Committee Files
 
@@ -144,15 +178,17 @@ for i, e in dfVenues.iterrows():
     lstExport.append("")
     lstExport.append("")
 
-    commitee = getCommittee(e.PCSId)
-    if (len(commitee) > 0):
-        lstExport.append(f"\\subsection{{{e.NameCommittee}}}")
-        lstExport.extend(commitee)
+    if hasValue(e.NameCommittee):
+        commitee = getCommittee(e.PCSId)
+        if (len(commitee) > 0):
+            lstExport.append(f"\\subsection{{{e.NameCommittee}}}")
+            lstExport.extend(commitee)
 
-    reviewers = getReviews(e.PCSId)
-    if (len(reviewers) > 0):
-        lstExport.append(f"\\subsection{{{e.NameReviewers}}}")
-        lstExport.extend(reviewers)
+    if hasValue(e.NameReviewers):
+        reviewers = getReviews(e.PCSId)
+        if (len(reviewers) > 0):
+            lstExport.append(f"\\subsection{{{e.NameReviewers}}}")
+            lstExport.extend(reviewers)
 
     if (len(lstExport) > 0):
         with open(f'committee/committee-{e.VenueId}.tex', 'w', encoding="utf-8") as fp:
