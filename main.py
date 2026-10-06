@@ -83,6 +83,37 @@ def getReviewCountSuffix(e, showReviewCount):
     reviewWord = "review" if completed == 1 else "reviews"
     return f" ({completed} {reviewWord} completed)"
 
+ORCID_PATTERN = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$")
+
+def isValidOrcid(orcid):
+    if not ORCID_PATTERN.match(orcid):
+        return False
+
+    # Validate the checksum digit per ISO 7064 MOD 11-2, as specified by ORCID.
+    digits = orcid.replace("-", "")
+    total = 0
+    for ch in digits[:-1]:
+        total = (total + int(ch)) * 2
+    remainder = total % 11
+    checkDigit = (12 - remainder) % 11
+    expected = "X" if checkDigit == 10 else str(checkDigit)
+    return digits[-1] == expected
+
+def formatName(e, hasOrcid):
+    if isinstance(e["Middle initial"], str):
+        name = f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}'
+    else:
+        name = f'{e["First name"]} {e["Family name"]}'
+
+    if hasOrcid and isinstance(e["ORCID"], str) and e["ORCID"].strip():
+        orcid = e["ORCID"].strip().replace("https://orcid.org/", "").replace("http://orcid.org/", "")
+        if isValidOrcid(orcid):
+            name = f'\\href{{https://orcid.org/{orcid}}}{{{name}}}'
+        else:
+            print(f'WARNING: Ignoring invalid ORCID "{orcid}" for {name}')
+
+    return name
+
 def getCommittee(PCSId, showReviewCount=False):
     path = f"./data-PCS/{PCSId}_committee.csv"
     if (not os.path.isfile(path)):
@@ -97,6 +128,7 @@ def getCommittee(PCSId, showReviewCount=False):
         return []
 
     lstText = []
+    hasOrcid = "ORCID" in df.columns
     df["Family name"] = df["Family name"].str.title()
     df["First name"] = df["First name"].str.title()
     #df["Middle name"] = df["Middle name"].str.title()
@@ -112,10 +144,7 @@ def getCommittee(PCSId, showReviewCount=False):
 
         aff = aff.replace("&", "\\&")
         reviewCountSuffix = getReviewCountSuffix(e, showReviewCount)
-        if isinstance(e["Middle initial"], str):
-            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}, \\emph{{{aff}}}{reviewCountSuffix}\\\\')
-        else:
-            lstText.append(f'{e["First name"]} {e["Family name"]}, \\emph{{{aff}}}{reviewCountSuffix}\\\\')
+        lstText.append(f'{formatName(e, hasOrcid)}, \\emph{{{aff}}}{reviewCountSuffix}\\\\')
 
     if (len(df) > 50):
         lstText.insert(0, "\\begin{multicols}{2}")
@@ -147,14 +176,12 @@ def getReviews(PCSId, showReviewCount=False):
         df["Middle name"] = df["Middle name"].apply(lambda x: x[0].title()+x[1:] if len(x)>2 else x)
 
     df = df.sort_values(["Family name", "First name", "Middle initial"])
+    hasOrcid = "ORCID" in df.columns
     lstText = []
     lstText.append("\\begin{multicols}{3}")
     for i, e in df.iterrows():
         reviewCountSuffix = getReviewCountSuffix(e, showReviewCount)
-        if isinstance(e["Middle initial"], str):
-            lstText.append(f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}{reviewCountSuffix}\\\\')
-        else:
-            lstText.append(f'{e["First name"]} {e["Family name"]}{reviewCountSuffix}\\\\')
+        lstText.append(f'{formatName(e, hasOrcid)}{reviewCountSuffix}\\\\')
     lstText.append("\\end{multicols}")
     lstText.append("")
     return lstText
