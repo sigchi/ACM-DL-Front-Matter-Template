@@ -1,5 +1,6 @@
 import os
 import re
+import sys
 from pandas.api.types import CategoricalDtype
 import numpy as np
 import pandas as pd
@@ -19,6 +20,18 @@ dfCommittee.head()
 dfVenues = pd.read_csv("./data/proceedingsInfo.csv")
 dfVenues = dfVenues.sort_values("Order")
 dfVenues.head()
+
+print("Generation settings read from data/proceedingsInfo.csv:\n")
+print(dfVenues[[
+    "Order", "Name", "VenueId", "PCSId",
+    "NameCommittee", "NameReviewers", "Prefix", "UseQOALASessions",
+]].to_string(index=False))
+print()
+
+answer = input("Proceed with generating the front matter using these settings? [y/N]: ").strip().lower()
+if answer not in ("y", "yes"):
+    print("Aborted. No files were generated.")
+    sys.exit(0)
 
 # %% [markdown]
 # # Generate Committee Files
@@ -58,11 +71,11 @@ def getCommittee(PCSId):
 
     if (len(df) > 50):
         lstText.insert(0, "\\begin{multicols}{2}")
-        lstText.append("\end{multicols}")
+        lstText.append("\\end{multicols}")
     else:
 
         lstText.insert(0, "%\\begin{multicols}{2}")
-        lstText.append("%\end{multicols}")
+        lstText.append("%\\end{multicols}")
     lstText.append("")
     return lstText
 
@@ -107,7 +120,7 @@ for i, e in dfCommittee.iterrows():
     if (lastPosition != e.Position):
         lastPosition = e.Position
         lstExport.append("")
-        lstExport.append(f"\subsection{{{e.Position}}}")
+        lstExport.append(f"\\subsection{{{e.Position}}}")
 
     lstExport.append(f'{e.Name}, \\emph{{{e.Affiliation}, {e.Country}}}\\\\')
 
@@ -117,14 +130,14 @@ if (len(lstExport) > 0):
 
 for i, e in dfVenues.iterrows():
     lstExport = []
-    lstExport.append("% If this venue/track has subcommittees, you might want to split the \subsection{Committee Member} into different \subsubsections for the different committees.")
+    lstExport.append("% If this venue/track has subcommittees, you might want to split the \\subsection{Committee Member} into different \\subsubsections for the different committees.")
     lstExport.append("")
     dfX = dfCommittee[dfCommittee.VenueId == e.VenueId]
 
     if (len(dfX) > 0):
         lstExport.append(f"\\subsection{{{e.Name} Chairs}}")
         for j, c in dfX.iterrows():
-            lstExport.append(f"{c.Name}, \emph{{{c.Affiliation}, {c.Country}}}\\\\")
+            lstExport.append(f"{c.Name}, \\emph{{{c.Affiliation}, {c.Country}}}\\\\")
     else:
         print(f"WARNING: {e.Name} has no chairs assigned to it. use the VenueId '{e.VenueId}' and assign them in the ./data/committee.csv to the respective chair(s)")
 
@@ -133,12 +146,12 @@ for i, e in dfVenues.iterrows():
 
     commitee = getCommittee(e.PCSId)
     if (len(commitee) > 0):
-        lstExport.append(f"\subsection{{{e.NameCommittee}}}")
+        lstExport.append(f"\\subsection{{{e.NameCommittee}}}")
         lstExport.extend(commitee)
 
     reviewers = getReviews(e.PCSId)
     if (len(reviewers) > 0):
-        lstExport.append(f"\subsection{{{e.NameReviewers}}}")
+        lstExport.append(f"\\subsection{{{e.NameReviewers}}}")
         lstExport.extend(reviewers)
 
     if (len(lstExport) > 0):
