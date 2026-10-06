@@ -67,6 +67,12 @@ def checkDataFiles(dfVenues):
 
 checkDataFiles(dfVenues)
 
+outputDirs = ["committee", "content", "export"]
+for outDir in outputDirs:
+    if not os.path.isdir(outDir):
+        print(f"Creating missing output folder: {outDir}/")
+        os.makedirs(outDir, exist_ok=True)
+
 # %% [markdown]
 # # Generate Committee Files
 
@@ -227,14 +233,16 @@ dfACM = pd.read_csv("./data-erights/export.csv")
 
 dfACM = dfACM.rename(columns={"Contact No.": "ID", "ACM No.": "ACMNo"})
 
+print("Processing data-erights/export.csv:")
+
 dX = dfACM[dfACM["Rights Granted"].str.startswith("WITHDRAWN")]
 if (len(dX) > 0):
-    print(f'WITHDRAWN: {dX["ID"].values}')
+    print(f'  - {len(dX)} paper(s) marked "WITHDRAWN" by ACM E-Rights, excluded from the proceedings: {dX["ID"].to_list()}')
 dfACM = dfACM[~dfACM["Rights Granted"].str.startswith("WITHDRAWN")]
 
 dX = dfACM[dfACM["Rights Granted"].str.startswith("DUPLICATE INSERTS")]
 if (len(dX) > 0):
-    print(f'DUPLICATE INSERTS: {dX["ID"].values}')
+    print(f'  - {len(dX)} paper(s) marked "DUPLICATE INSERTS" by ACM E-Rights (the paper was submitted into the proceedings database more than once), excluded from the proceedings: {dX["ID"].to_list()}')
 dfACM = dfACM[~dfACM["Rights Granted"].str.startswith("DUPLICATE INSERTS")]
 
 dfACM['Email'] = dfACM.Email.apply(lambda x: x.split(" ")[0])
@@ -255,7 +263,12 @@ dfACM["TitleRaw"] = dfACM.TitleRaw.str.replace('[', '', regex=False)
 #dfACM["TitleRaw"] = dfACM.TitleRaw.str.lower()
 
 # Remove duplicates, this is possible when the contact authors can not sign the copyright for all authors.
+dX = dfACM[dfACM.duplicated("ID", keep="first")]
+if (len(dX) > 0):
+    print(f'  - {len(dX)} duplicate row(s) for paper ID(s) already seen (can happen when not all contact authors signed the copyright release), keeping the first occurrence: {dX["ID"].to_list()}')
 dfACM = dfACM.drop_duplicates("ID")
+
+print()
 
 dfACM = dfACM[["ACMNo", "ID", "Prefix", "Title", "Author", "DOI"]]
 
