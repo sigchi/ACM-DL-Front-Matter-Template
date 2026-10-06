@@ -99,20 +99,23 @@ def isValidOrcid(orcid):
     expected = "X" if checkDigit == 10 else str(checkDigit)
     return digits[-1] == expected
 
+def linkOrcid(name, orcidValue):
+    if isinstance(orcidValue, str) and orcidValue.strip():
+        orcid = orcidValue.strip().replace("https://orcid.org/", "").replace("http://orcid.org/", "")
+        if isValidOrcid(orcid):
+            return f'\\href{{https://orcid.org/{orcid}}}{{{name}}}'
+        else:
+            print(f'WARNING: Ignoring invalid ORCID "{orcid}" for {name}')
+
+    return name
+
 def formatName(e, hasOrcid):
     if isinstance(e["Middle initial"], str):
         name = f'{e["First name"]} {e["Middle initial"]} {e["Family name"]}'
     else:
         name = f'{e["First name"]} {e["Family name"]}'
 
-    if hasOrcid and isinstance(e["ORCID"], str) and e["ORCID"].strip():
-        orcid = e["ORCID"].strip().replace("https://orcid.org/", "").replace("http://orcid.org/", "")
-        if isValidOrcid(orcid):
-            name = f'\\href{{https://orcid.org/{orcid}}}{{{name}}}'
-        else:
-            print(f'WARNING: Ignoring invalid ORCID "{orcid}" for {name}')
-
-    return name
+    return linkOrcid(name, e["ORCID"] if hasOrcid else None)
 
 def getCommittee(PCSId, showReviewCount=False):
     path = f"./data-PCS/{PCSId}_committee.csv"
@@ -187,6 +190,7 @@ def getReviews(PCSId, showReviewCount=False):
     return lstText
 
 lastPosition = ""
+hasOrcidCommittee = "ORCID" in dfCommittee.columns
 
 lstExport = []
 lstExport.append("% Please list all organization committee members and their respected roles below. The best source to fill in this document is the conference webpage.")
@@ -198,7 +202,8 @@ for i, e in dfCommittee.iterrows():
         lstExport.append("")
         lstExport.append(f"\\subsection{{{e.Position}}}")
 
-    lstExport.append(f'{e.Name}, \\emph{{{e.Affiliation}, {e.Country}}}\\\\')
+    name = linkOrcid(e.Name, e.ORCID if hasOrcidCommittee else None)
+    lstExport.append(f'{name}, \\emph{{{e.Affiliation}, {e.Country}}}\\\\')
 
 if (len(lstExport) > 0):
         with open(f'committee/committee-organizer.tex', 'w', encoding="utf-8") as fp:
@@ -213,7 +218,8 @@ for i, e in dfVenues.iterrows():
     if (len(dfX) > 0):
         lstExport.append(f"\\subsection{{{e.Name} Chairs}}")
         for j, c in dfX.iterrows():
-            lstExport.append(f"{c.Name}, \\emph{{{c.Affiliation}, {c.Country}}}\\\\")
+            name = linkOrcid(c.Name, c.ORCID if hasOrcidCommittee else None)
+            lstExport.append(f"{name}, \\emph{{{c.Affiliation}, {c.Country}}}\\\\")
     else:
         print(f"WARNING: {e.Name} has no chairs assigned to it. use the VenueId '{e.VenueId}' and assign them in the ./data/committee.csv to the respective chair(s)")
 
