@@ -18,10 +18,22 @@ After exporting all data, adjust the `proceedingsInfo.csv` file in `data` folder
 * Order -- Order of the venue in the Table of Content latex export
 * UseQOALASessions -- True if the sessions from QOALA should be used. False otherwise.
 
-## 3. Generate Files
-Exceute the `generateFrontMatter.ipynb` script using `jupyter nbconvert --execute --to notebook --inplace generateFrontMatter.ipynb` or start a jupter server to jun the script. 
+## 3. Set Up the Python Environment
+The generation script requires Python 3 with a few packages. Create a local virtual environment and install the dependencies from `requirements.txt`:
+```
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+On Windows, activate the environment with `.venv\Scripts\activate` instead.
 
-## 4. Create Extra PDF Files
+## 4. Generate Files
+With the virtual environment activated, run:
+```
+python main.py
+```
+
+## 5. Create Extra PDF Files
 * Title Page (`cover/cover_font.pdf`): This can be designed to match the conference theme. The conference name, general chair names, and technical program chair names should be included. The original layout is from [ACM Styleguide](http://identitystandards.acm.org/styleguide/).
 * Last Page (`cover/cover_back.pdf`): This can be designed to match the conference theme. The recommendation is to include the sponsors.
 * Copyright Page (`acm-copyright.pdf`): Fill in the [ACM Copyright template](https://www.acm.org/binaries/content/assets/publications/gi-verso.doc) to create the `acm-copyright.pdf` (see the [ACM General Instructions for Proceedings Volumes] (https://www.acm.org/publications/gi-proceedings-current) for all details). This page must appear as the second page in the final font matter.

@@ -330,3 +330,4 @@ Temporary Items
 
 # Python.gitignore
 .ipynb_checkpoints
+.venv/
