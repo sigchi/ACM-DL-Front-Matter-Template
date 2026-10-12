@@ -76,12 +76,32 @@ for outDir in outputDirs:
 # %% [markdown]
 # # Generate Committee Files
 
+REVIEW_RATING_COLUMNS = [
+    ("Reviews special recognition", "special recognition"),
+    ("Reviews highly useful", "highly useful"),
+    ("Reviews useful", "useful"),
+]
+
+NUMERIC_REVIEW_COLUMNS = ["Reviews assigned", "Reviews incomplete"] + [column for column, _ in REVIEW_RATING_COLUMNS]
+
+def normalizeReviewColumns(df):
+    for column in NUMERIC_REVIEW_COLUMNS:
+        if column in df.columns:
+            df[column] = df[column].fillna(0).astype(int)
+    return df
+
 def getReviewCountSuffix(e, showReviewCount):
     if not showReviewCount:
         return ""
     completed = e["Reviews assigned"] - e["Reviews incomplete"]
     reviewWord = "review" if completed == 1 else "reviews"
-    return f" ({completed} {reviewWord} completed)"
+    parts = [f"{completed} {reviewWord} completed"]
+
+    for column, label in REVIEW_RATING_COLUMNS:
+        if column in e.index and pd.notna(e[column]) and e[column] != 0:
+            parts.append(f"{e[column]} {label}")
+
+    return f" ({', '.join(parts)})"
 
 ORCID_PATTERN = re.compile(r"^\d{4}-\d{4}-\d{4}-\d{3}[0-9X]$")
 
@@ -124,6 +144,7 @@ def getCommittee(PCSId, showReviewCount=False):
         return []
 
     df = pd.read_csv(path)
+    df = normalizeReviewColumns(df)
     df = df[(df["Reviews assigned"] - df["Reviews incomplete"]) > 0]
 
     if (len(df) == 0):
@@ -166,6 +187,7 @@ def getReviews(PCSId, showReviewCount=False):
         return []
 
     df = pd.read_csv(path)
+    df = normalizeReviewColumns(df)
     df = df[(df["Reviews assigned"] - df["Reviews incomplete"]) > 0]
 
     if (len(df) == 0):
